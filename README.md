@@ -1,1 +1,0 @@
-This is just fun times learning more about git and express. And Gulp. And Node.js.

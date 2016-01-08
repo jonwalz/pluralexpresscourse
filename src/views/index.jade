@@ -1,0 +1,31 @@
+html
+    head
+        //- bower:css
+        link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.min.css')
+        //- endbower
+        //- bower:js
+        script(src='/lib/jquery/dist/jquery.js')
+        //- endbower
+        //- inject:css
+
+        link(rel="stylesheet", href="/css/landing-page.css")
+
+        link(rel="stylesheet", href="/css/style.css")
+
+        //- endinject
+        //- inject:js
+
+        script(src="/js/app.js")
+
+        script(src="/js/bootstrap.min.js")
+
+        script(src="/js/jquery.js")
+
+        //- endinject
+
+        title MyApp
+    body
+        h1 My app
+        p
+            h3 sub heading

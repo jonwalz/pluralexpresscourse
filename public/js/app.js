@@ -10,7 +10,7 @@ app.set('views', 'src/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.render('index', {title: "This is the title", list: ["a", "b"]});
+    res.render('index', {title: "This is the title", nav: [{link: '/Books', text:"Books"}, {link: '/Authors', text:"Authors"}]});
 });
 
 app.listen(port, function (err) {

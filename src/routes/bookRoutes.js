@@ -1,7 +1,7 @@
 var express = require('express');
 
 var bookRouter = express.Router();
-var router = function(nav){
+var router = function (nav) {
     var books = [
         {
             title: 'War and Peace',
@@ -63,9 +63,10 @@ var router = function(nav){
 
     bookRouter.route('/:id')
         .get(function (req, res) {
-            var request = new sql.Request();
 
-            request.query('select * from books');
+            request.query('select * from books', function (err, recordset) {
+                console.log('recordset');
+            });
             var id = req.params.id
             res.render('bookView', {
                 title: 'Book',

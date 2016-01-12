@@ -2,6 +2,19 @@ var express = require('express');
 
 var app = express();
 
+// Connect to the database
+var sql = require('mssql');
+var config = {
+    user: 'jon',
+    password: '9Axchach',
+    server: 'localhost', // You can use 'localhost\\instance' to connect to named instance
+    database: 'books_app',
+};
+
+sql.connect(config, function(){
+
+});
+
 var port = process.env.PORT || 5000;
 var nav = [{
     Link: '/Books',
@@ -10,82 +23,26 @@ var nav = [{
     Link: '/Authors',
     Text: 'Author'
 }];
-var bookRouter = require('./src/routes/bookRoutes')(nav);
+var bookRouter = require('./src/routes/bookRoutes.js')(nav);
 
 app.use(express.static('public'));
 app.set('views', './src/views');
 
 app.set('view engine', 'ejs');
 
-var books = [
-    {
-        title: 'War and Peace',
-        genre: 'Historical Fiction',
-        author: 'Lev Nikolayevich Tolstoy',
-        read: false
-    },
-    {
-        title: 'Les Misérables',
-        genre: 'Historical Fiction',
-        author: 'Victor Hugo',
-        read: false
-    },
-    {
-        title: 'The Time Machine',
-        genre: 'Science Fiction',
-        author: 'H. G. Wells',
-        read: false
-    },
-    {
-        title: 'A Journey into the Center of the Earth',
-        genre: 'Science Fiction',
-        author: 'Jules Verne',
-        read: false
-    },
-    {
-        title: 'The Dark World',
-        genre: 'Fantasy',
-        author: 'Henry Kuttner',
-        read: false
-    },
-    {
-        title: 'The Wind in the Willows',
-        genre: 'Fantasy',
-        author: 'Kenneth Grahame',
-        read: false
-    },
-    {
-        title: 'Life On The Mississippi',
-        genre: 'History',
-        author: 'Mark Twain',
-        read: false
-    },
-    {
-        title: 'Childhood',
-        genre: 'Biography',
-        author: 'Lev Nikolayevich Tolstoy',
-        read: false
-    }
-];
-
-app.use('/Books', bookRouter);
+app.use('/Books', bookRouter)
 
 app.get('/', function (req, res) {
-    res.render('index', {
-        title: 'Hello from render',
+    res.render('index',  {
+        title: 'Index',
         nav: [{
             Link: '/Books',
             Text: 'Books'
         }, {
             Link: '/Authors',
             Text: 'Authors'
-        }],
-        books: books
+        }]
     });
-});
-
-app.get('/books', function (req, res) {
-    res.send('Hello Books');
 });
 
 console.log('running server on port ' + port);

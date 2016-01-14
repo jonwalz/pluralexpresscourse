@@ -66,7 +66,6 @@ var router = function (nav) {
                     db.close();
                 });
             });
-            //res.send('inerting books');
         });
 
     return adminRouter;

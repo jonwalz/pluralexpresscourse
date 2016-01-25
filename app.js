@@ -8,10 +8,7 @@ var session = require('express-session');
 var port = process.env.PORT || 5000;
 var nav = [{
     Link: '/Books',
-    Text: 'Book'
-}, {
-    Link: '/Authors',
-    Text: 'Author'
+    Text: 'Books'
 }];
 var bookRouter = require('./src/routes/bookRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
@@ -39,9 +36,6 @@ app.get('/', function (req, res) {
         nav: [{
             Link: '/Books',
             Text: 'Books'
-        }, {
-            Link: '/Authors',
-            Text: 'Authors'
         }]
     });
 });

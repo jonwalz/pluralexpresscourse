@@ -10,7 +10,7 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1''';
 
 // Mongo string for openshift
 
-mongodb_connection_string = 'mongodb://127.0.0.1:27017/libraryApp';
+mongodb_connection_string = 'mongodb://127.0.0.1:27017/books';
 
 
 var nav = [{
@@ -52,5 +52,5 @@ app.listen(port, server_ip_address, function (err) {
 });
 
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
-    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + 'books';
 }

@@ -6,7 +6,13 @@ var passport = require('passport');
 var session = require('express-session');
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 5000;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1''';
+
+// Mongo string for openshift
+
+mongodb_connection_string = 'mongodb://127.0.0.1:27017/libraryApp;
+
+
 var nav = [{
     Link: '/Books',
     Text: 'Books'
@@ -44,3 +50,7 @@ app.get('/', function (req, res) {
 console.log('running server on port ' + port);
 app.listen(port, server_ip_address, function (err) {
 });
+
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + 'libraryApp';
+}
